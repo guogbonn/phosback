@@ -17,7 +17,7 @@ if LOCAL:
 
 else:
     FRONTEND_URL = "http://phostrino.com"
-    BACKEND_URL = ""
+    BACKEND_URL = "https://phostrino.herokuapp.com"
     STRIPE_KEY = 'sk_test_51LKBjELd2ZgM3kuXudwuSTc2uWMykaUBrrnNaImttcpeWrOacQh9h7Sp4VhDYwZR2cehyde98iOkMMFeSijNcqoA008XLZ9EV8'
     # DATABASENAME = ""
     # DATABASEPASSWORD = ""
