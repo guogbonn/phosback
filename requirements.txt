@@ -3,3 +3,6 @@ stripe
 psycopg2-binary
 pytz
 redmail
+uvicorn
+aiofiles
+python-multipart

@@ -1,5 +1,7 @@
 import psycopg2
 from datetime import datetime
+import urllib.parse as up
+import settings
 import pytz # $ pip install pytz
 
 def create_tables():
@@ -346,7 +348,29 @@ def batch_create_courses():
 
 
 if __name__ == "__main__":
-    conn = psycopg2.connect(database = "mydb",  host = "127.0.0.1", port = "5432")
+    # conn = psycopg2.connect(database = "mydb",  host = "127.0.0.1", port = "5432")
+    # postgres://username:password@hostname:port/database
+    # postgres://ehomefcs:E3ZVNIBJ6f0ynoxUROeT_BdyxCI8o9Cm@isilo.db.elephantsql.com/ehomefcs
+
+
+
+    # up.uses_netloc.append("postgres")
+    # url = up.urlparse(os.environ["DATABASE_URL"])
+    # conn = psycopg2.connect(database=url.path[1:],
+    # user='ehomefcs',
+    # password='E3ZVNIBJ6f0ynoxUROeT_BdyxCI8o9Cm',
+    # host=url.hostname,
+    # port=url.port
+    # )
+    up.uses_netloc.append("postgres")
+    url = up.urlparse('postgres://ehomefcs:E3ZVNIBJ6f0ynoxUROeT_BdyxCI8o9Cm@isilo.db.elephantsql.com/ehomefcs')
+    conn = psycopg2.connect(database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port='5432'
+    )
+    print(url.path[1:],url.username,url.password,url.hostname,'5432')
     print("\nOpened database successfully \n")
     cur = conn.cursor()
     drop_tables()
