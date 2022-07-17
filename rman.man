@@ -1,0 +1,28 @@
+pip3 install -r requirements.txt
+https://towardsdatascience.com/requirements-vs-setuptools-python-ae3ee66e28af
+
+postgres local
+error on installation solved by:
+https://stackoverflow.com/questions/69754628/psql-error-connection-to-server-on-socket-tmp-s-pgsql-5432-failed-no-such
+
+/dt see list of tables
+
+CREATE USER gabe did not create a role
+
+\h \q
+
+commands
+createdb mydb
+dropdb mydb
+psql mydb
+
+allow users to unsubscribe
+
+Using for docs: https://www.postgresql.org/files/documentation/pdf/15/postgresql-15-A4.pdf
+python interface: https://www.tutorialspoint.com/postgresql/postgresql_python.htm
+
+https://stackoverflow.com/questions/2331592/why-does-datetime-datetime-utcnow-not-contain-timezone-information
+
+https://stackoverflow.com/questions/5247685/python-postgres-psycopg2-getting-id-of-row-just-inserted
+
+Get Dbeaver -

@@ -1,0 +1,5 @@
+fastapi[all]
+stripe
+psycopg2-binary
+pytz
+redmail
