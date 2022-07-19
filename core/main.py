@@ -40,6 +40,10 @@ app.add_middleware(
 async def ping():
     return {"live":"sucess"}
 
+@app.get("/env")
+async def env():
+    return {"stripe_pk": settings.STRIPE_PUB}
+
 @app.post("/log_login")
 async def log_login(payload: dict = Body(...)):
     try:
