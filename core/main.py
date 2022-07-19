@@ -26,7 +26,7 @@ origins = [
     "http://localhost:8080",
     "http://localhost:8001",
     "http://localhost:8000",
-    "https://phostrino"
+    "https://www.phostrino.com"
 ]
 
 app.add_middleware(
