@@ -1,7 +1,6 @@
 import psycopg2
 from datetime import datetime
 import urllib.parse as up
-import settings
 import pytz # $ pip install pytz
 
 def create_tables():
@@ -381,6 +380,8 @@ if __name__ == "__main__":
     # left join
     # get_student_login()
     # create_course()
-    batch_create_courses()
+
+    # batch_create_courses()
+    
     # create_course_student()
     conn.close()
