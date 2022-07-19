@@ -205,7 +205,8 @@ async def submit_enrollment( data: dict = Body(...)):
         "zoom_link"  : data["zoom_link"],
         "recipients": [data["email"]],
         "unsubscribe_link" : settings.FRONTEND_URL + f'unsubscribe.html?class={str(student_id)}',
-        "terms_link" : settings.FRONTEND_URL + 'terms.html'
+        "terms_link" : settings.FRONTEND_URL + 'terms.html',
+        "passcode": data["passcode"]
         }
 
         # save failure point

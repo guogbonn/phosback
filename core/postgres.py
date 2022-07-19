@@ -36,7 +36,8 @@ def create_tables():
           zoom_link         VARCHAR ( 255 )             ,
           ages              VARCHAR ( 255 )     NOT NULL,
           display           VARCHAR ( 1 )      NOT NULL,
-          section           INT                NOT NULL);''')
+          section           INT                NOT NULL,
+          passcode          VARCHAR ( 255 )         );''')
           # class size
           # course session length
 
@@ -138,7 +139,8 @@ def create_course(obj = None):
       zoom_link         VARCHAR ( 255 )             ,
       ages              VARCHAR ( 50 )     NOT NULL),
       display           VARCHAR ( 1 )      NOT NULL,
-      section           INT                NOT NULL
+      section           INT                NOT NULL,
+      passcode          VARCHAR ( 255 ),
 
      """
      if obj == None:
@@ -151,12 +153,13 @@ def create_course(obj = None):
          "price": 200,
          "seats_available": 12,
          "zoom_link": "google.com",
+         "passcode": "839999",
          "ages": "18+",
          "display": "t",
          "section": 1,
          }
-     insert_statement = f'INSERT INTO COURSE ( course_title, days, dates, class_time, created_on, price, seats_available, zoom_link, ages, display, section) VALUES \
-      ( \'{obj["course_title"]}\', \'{obj["days"]}\', \'{obj["dates"]}\', \'{obj["class_time"]}\', \'{obj["created_on"]}\', {obj["price"]}, {obj["seats_available"]}, \'{obj["zoom_link"]}\', \'{obj["ages"]}\',\'{obj["display"]}\',{obj["section"]});'
+     insert_statement = f'INSERT INTO COURSE ( course_title, days, dates, class_time, created_on, price, seats_available, zoom_link, ages, display, section, passcode) VALUES \
+      ( \'{obj["course_title"]}\', \'{obj["days"]}\', \'{obj["dates"]}\', \'{obj["class_time"]}\', \'{obj["created_on"]}\', {obj["price"]}, {obj["seats_available"]}, \'{obj["zoom_link"]}\', \'{obj["ages"]}\',\'{obj["display"]}\',{obj["section"]}, \'{obj["passcode"]}\');'
      cur.execute(insert_statement)
      conn.commit()
 
@@ -218,7 +221,7 @@ def get_student_login():
 
 def get_courses(title, cur):
     courses = []
-    cur.execute(f"SELECT course_title,days,dates,class_time,created_on,price,seats_available,zoom_link,ages,id  from COURSE where course_title = '{title}' and display = 't' and seats_available > 0 ORDER BY id ASC ")
+    cur.execute(f"SELECT course_title,days,dates,class_time,created_on,price,seats_available,zoom_link,ages,id,passcode  from COURSE where course_title = '{title}' and display = 't' and seats_available > 0 ORDER BY id ASC ")
     rows = cur.fetchall()
     for row in rows:
 
@@ -233,6 +236,7 @@ def get_courses(title, cur):
         obj["zoom_link"] = row[7]
         obj["ages"] = row[8]
         obj["id"] = row[9]
+        obj["passcode"] = row[10]
         courses.append(obj)
 
     return courses
@@ -258,12 +262,13 @@ def batch_create_courses():
               {
              "course_title" : "Intro to Python",
              "days" : "M W F",
-             "dates" : "08/22/2022-09/12/2022",
+             "dates" : "8/1/2022-8/22/2022",
              "class_time" : "5:30-6:30pm EST",
              "created_on": datetime.now(pytz.timezone("America/New_York")) ,
              "price": 200,
              "seats_available": 12,
-             "zoom_link": "google.com",
+             "zoom_link": "https://us06web.zoom.us/j/85001340901?pwd=Sk9BWCtiRHJYU1RLc3lpK1ZidGlPdz09",
+             "passcode": "839999",
              "ages": "14-17",
              "display": "t",
              "section": 1
@@ -271,12 +276,13 @@ def batch_create_courses():
               {
               "course_title" : "Intro to Python",
               "days" : "M W F",
-              "dates" : "08/22/2022-09/12/2022",
+              "dates" : "8/1/2022-8/22/2022",
               "class_time" : "6:40-7:40pm EST",
               "created_on": datetime.now(pytz.timezone("America/New_York")) ,
               "price": 200,
               "seats_available": 12,
-              "zoom_link": "google.com",
+              "zoom_link": "https://us06web.zoom.us/j/82331289947?pwd=Y2ZJSFhFbjNkcWVLK1JLWFJ2K25NZz09",
+              "passcode": "569814",
               "ages": "18+",
               "display": "t",
               "section": 1
@@ -285,12 +291,13 @@ def batch_create_courses():
             {
             "course_title" : "Intro to Python",
             "days" : "M W F",
-            "dates" : "08/22/2022-09/12/2022",
+            "dates" : "8/1/2022-8/22/2022",
             "class_time" : "7:50-8:50pm EST",
             "created_on": datetime.now(pytz.timezone("America/New_York")) ,
             "price": 200,
             "seats_available": 12,
-            "zoom_link": "google.com",
+            "zoom_link": "https://us06web.zoom.us/j/84343259402?pwd=aDJlcG9XVzZ1ZXplYUZPSUJES3QxUT09",
+            "passcode": "246568",
             "ages": "18+",
             "display": "t",
             "section": 1
@@ -299,12 +306,13 @@ def batch_create_courses():
             {
             "course_title" : "Intro to Python",
             "days" : "T Th Sat",
-            "dates" : "08/23/2022-09/13/2022",
+            "dates" : "8/2/2022-8/23/2022",
             "class_time" : "5:30-6:30pm EST",
             "created_on": datetime.now(pytz.timezone("America/New_York")) ,
             "price": 200,
             "seats_available": 12,
-            "zoom_link": "google.com",
+            "zoom_link": "https://us06web.zoom.us/j/83746983873?pwd=aE5xZEpxMjhuQVQzY2ovcHJjLzhUZz09",
+            "passcode": "959162",
             "ages": "14-17",
             "display": "t",
             "section": 1
@@ -313,12 +321,13 @@ def batch_create_courses():
             {
             "course_title" : "Intro to Python",
             "days" : "T Th Sat",
-            "dates" : "08/23/2022-09/13/2022",
+            "dates" : "8/2/2022-8/23/2022",
             "class_time" : "6:40-7:40pm EST",
             "created_on": datetime.now(pytz.timezone("America/New_York")) ,
             "price": 200,
             "seats_available": 12,
-            "zoom_link": "google.com",
+            "zoom_link": "https://us06web.zoom.us/j/81843664326?pwd=RGxuRHdmMy80UlZnUHNBNjkxcm1ydz09",
+            "passcode": "730220",
             "ages": "18+",
             "display": "t",
             "section": 1
@@ -328,12 +337,13 @@ def batch_create_courses():
             {
             "course_title" : "Intro to Python",
             "days" : "T Th Sat",
-            "dates" : "08/23/2022-09/13/2022",
+            "dates" : "8/2/2022-8/23/2022",
             "class_time" : "7:50-8:50pm EST",
             "created_on": datetime.now(pytz.timezone("America/New_York")) ,
             "price": 200,
             "seats_available": 12,
-            "zoom_link": "google.com",
+            "zoom_link": "https://us06web.zoom.us/j/83296580293?pwd=dkNOSkl2M3RYVTFBem1sUTdjWWxGQT09",
+            "passcode": "458840",
             "ages": "18+",
             "display": "t",
             "section": 1
@@ -348,19 +358,8 @@ def batch_create_courses():
 
 if __name__ == "__main__":
     # conn = psycopg2.connect(database = "mydb",  host = "127.0.0.1", port = "5432")
-    # postgres://username:password@hostname:port/database
-    # postgres://ehomefcs:E3ZVNIBJ6f0ynoxUROeT_BdyxCI8o9Cm@isilo.db.elephantsql.com/ehomefcs
 
 
-
-    # up.uses_netloc.append("postgres")
-    # url = up.urlparse(os.environ["DATABASE_URL"])
-    # conn = psycopg2.connect(database=url.path[1:],
-    # user='ehomefcs',
-    # password='E3ZVNIBJ6f0ynoxUROeT_BdyxCI8o9Cm',
-    # host=url.hostname,
-    # port=url.port
-    # )
     up.uses_netloc.append("postgres")
     url = up.urlparse('postgres://ehomefcs:E3ZVNIBJ6f0ynoxUROeT_BdyxCI8o9Cm@isilo.db.elephantsql.com/ehomefcs')
     conn = psycopg2.connect(database=url.path[1:],
@@ -369,7 +368,8 @@ if __name__ == "__main__":
     host=url.hostname,
     port='5432'
     )
-    print(url.path[1:],url.username,url.password,url.hostname,'5432')
+    # print(url.path[1:],url.username,url.password,url.hostname,'5432')
+
     print("\nOpened database successfully \n")
     cur = conn.cursor()
     drop_tables()
@@ -381,7 +381,7 @@ if __name__ == "__main__":
     # get_student_login()
     # create_course()
 
-    # batch_create_courses()
-    
+    batch_create_courses()
+
     # create_course_student()
     conn.close()

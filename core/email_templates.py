@@ -217,7 +217,9 @@ def course_welcome(obj):
         <br> <br>
         Course Length: <b>10 Sessions </b>
        <br><br>
-       Course Zoom Link: <a href=" {obj["zoom_link"]} ">{obj["course_title"]} Zoom Link</a> <br><br><br> You might find it easier to download Zoom before hand: <br><br><br>
+       Course Zoom Link: <a href=" {obj["zoom_link"]} ">{obj["course_title"]} Zoom Link</a> <br><br> <b>Meeting Passcode: {obj["passcode"]} </b> <br><br><br> You might find it easier to download Zoom before hand: <br><br><br>
+
+
 
    <a href="https://zoom.us/download">Zoom download </a> <br><br><br>  In the meantime, here are some resources our instructors have found useful, you can look through them at your pleasure. This is <b>not</b> required knowledge. <br>
        <br>
