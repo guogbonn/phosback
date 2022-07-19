@@ -16,20 +16,7 @@ def receipt(obj):
 <tbody>
 <tr>
   <td bgcolor="#222222" align="center" style="padding: 15px 0;"><div align="center" style="width: 100%;">
-        <h1 style="
-      letter-spacing: 0px;
-      -webkit-line-clamp: 3;
-      max-height: 84px;
-      line-height: 28px;
-      font-size: 22px;
-      font-weight: 700;
-      -webkit-box-orient: vertical;
-      display: -webkit-box;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      color: white;
-      font-family: sohne,
-      " helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" margin-left:="" auto;="" margin-right:="" margin-bottom:="" 20px;="" "=""> Phostrino
+        <h1 style="color:white"> Phostrino
     </h1>
   </div>
     <div align="center" style="word-break:break-word;border-collapse:collapse!important;vertical-align:top;text-align:center;display:block;font-family: 'Lato', sans-serif;font-size:14px; color: #AAA; font-weight:300;">Thank You for Registering {obj["student_name"]}</div></td>
